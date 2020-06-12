@@ -33,7 +33,7 @@ if varType=='P':
     for i in range(num_rows):
         x=ttestColNo
         for j in range(3,lastCol,2):
-            if float(data[i,j])>int(limitArr[1]) and float(data[i,j])<int(limitArr[0]) and float(data[i,j+2*timePts])>=0.4 and float(data[i,j+x])<=0.01:
+            if float(data[i,j])>=int(limitArr[1]) and float(data[i,j])<int(limitArr[0]) and float(data[i,j+2*timePts])>=0.4 and float(data[i,j+x])<=0.01:
                 string=F'{data[i][0]}-{data[i][1]}'
                 if not string in pepArr:
                     pepArr.append(string)
@@ -45,7 +45,7 @@ if varType=='E':
     for i in range(num_rows):
         x=ttestColNo
         for j in range(3,lastCol,2):
-            if float(data[i,j])<l and float(data[i,j])>u and abs(float(data[i,j+2*timePts]))>=0.4 and float(data[i,j+x])<=0.01:
+            if float(data[i,j])<=l and float(data[i,j])>u and abs(float(data[i,j+2*timePts]))>=0.4 and float(data[i,j+x])<=0.01:
                 string=F'{data[i][0]}-{data[i][1]}'
                 if not string in pepArr:
                     pepArr.append(string)
