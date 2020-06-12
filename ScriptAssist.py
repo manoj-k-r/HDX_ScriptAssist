@@ -8,19 +8,23 @@ limitArr=[]
 timePts=int(len(data[0,3:])/5)
 lastCol=3+timePts*2
 ttestColNo=4*timePts
-protLen=input("Give the length of the protein: ")
-nocArr=[]
-if int(data[0,1])!=1:
-    nocArr.append(F'1-{int(data[0,0])-1}')
-for i in range(1,num_rows):
-    lastEnd=int(data[i-1,1])
-    start=int(data[i,0])
-    if start>lastEnd+1:
-        nocArr.append(F'{lastEnd+1}-{start-1}')
-if int(data[num_rows-1,1])<int(protLen):
-    nocArr.append(F'{int(data[num_rows-1,1])+1}-{protLen}')
-d=","
-print(F'Peptides not covered in this data set: {d.join(nocArr)}')    
+decision=input("Do you want peptides not covered in this dataset? Type Y or N: ")
+while decision!='Y' and decision!='N':
+    decision=input("Invalid entry. Type Y or N")
+if decision=='Y':
+    protLen=input("Give the length of the protein: ")
+    nocArr=[]
+    if int(data[0,1])!=1:
+        nocArr.append(F'1-{int(data[0,0])-1}')
+    for i in range(1,num_rows):
+        lastEnd=int(data[i-1,1])
+        start=int(data[i,0])
+        if start>lastEnd+1:
+            nocArr.append(F'{lastEnd+1}-{start-1}')
+    if int(data[num_rows-1,1])<int(protLen):
+        nocArr.append(F'{int(data[num_rows-1,1])+1}-{protLen}')
+    d=","
+    print(F'Peptides not covered in this data set: {d.join(nocArr)}')    
 varType=input("Is this a protection or exposure? (Type P for protection and E for exposure): ")
 while varType!='P' and varType!='E':
     varType=input("Invalid Entry. Type P or E: ")
@@ -29,6 +33,7 @@ limitArr.append(upper)
 lower=input("Enter lower-limit: ")
 limitArr.append(lower)
 pepArr=[]
+d=","
 if varType=='P':
     for i in range(num_rows):
         x=ttestColNo
