@@ -1,6 +1,6 @@
 # HDX Script Assistant
 
-Takes a completed HDX excel file and gives a list of all peptides that are protected or exposed within specified limits of %D.
+Takes a csv file and gives a list of all peptides that are protected or exposed within specified limits of %D.
 
 Assumptions:
 #D>0.4
